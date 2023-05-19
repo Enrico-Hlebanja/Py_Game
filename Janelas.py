@@ -25,7 +25,7 @@ janelaA_image5 = pygame.image.load('assets/img/JanelaA5.png').convert()
 janelaA_image5 = pygame.transform.scale(janelaA_image5, (100, 150))
 score_font = pygame.font.Font('assets/font/PressStart2P.ttf', 50)
 
-Imagens = [janelaA_image2]
+Imagens = [janelaA_image1]
 
 # ----- Inicia estruturas de dados
 game = True
