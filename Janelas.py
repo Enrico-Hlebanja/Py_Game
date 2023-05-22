@@ -8,6 +8,7 @@ pygame.init()
 # ----- Gera tela principal
 window = pygame.display.set_mode((600, 700))
 HEIGHT = 700
+WIDTH = 600
 pygame.display.set_caption('SUPER JOGO DO ENRICO')
 brick_image = pygame.image.load('assets/img/Fundo.png').convert()
 brick_image = pygame.transform.scale(brick_image, (600, 700))
@@ -23,7 +24,8 @@ janelaA_image4 = pygame.image.load('assets/img/JanelaA4.png').convert()
 janelaA_image4 = pygame.transform.scale(janelaA_image4, (100, 150))
 janelaA_image5 = pygame.image.load('assets/img/JanelaA5.png').convert()
 janelaA_image5 = pygame.transform.scale(janelaA_image5, (100, 150))
-score_font = pygame.font.Font('assets/font/PressStart2P.ttf', 50)
+lives_font = pygame.font.Font('assets/font/PressStart2P.ttf', 50)
+score_font = pygame.font.Font('assets/font/Digital7Italic-BW658.ttf', 50)
 
 Imagens = [janelaA_image1]
 
@@ -47,8 +49,10 @@ Tempo = pygame.time.get_ticks()
 Tempo2 = 0
 c = 0
 lives = 3
+score = 0
 # ===== Loop principal =====
 while game:
+    score = pygame.time.get_ticks()//1000
 
 
     
@@ -121,7 +125,7 @@ while game:
     agora=pygame.time.get_ticks()
     if agora - Tempo > Velocidade: 
         Tempo = agora
-        n = random.randint(0,8)
+        n = random.randint(0,9)
         for e in range(8):
             if e == n:
                 print(Velocidade)
@@ -158,9 +162,14 @@ while game:
     
         
     # ----- Atualiza estado do jogo
-    text_surface = score_font.render(chr(9829) * lives, True, (100, 100, 200))
+    text_surface = lives_font.render(chr(9829) * lives, True, (100, 100, 200))
     text_rect = text_surface.get_rect()
     text_rect.bottomleft = (10, HEIGHT - 10)
+    window.blit(text_surface, text_rect)
+
+    text_surface = score_font.render("{:03d}".format(score), True, (0, 0, 0))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (WIDTH / 2, 0)
     window.blit(text_surface, text_rect)
     
 
