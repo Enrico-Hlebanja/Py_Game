@@ -43,6 +43,8 @@ score_font = pygame.font.Font('assets/font/Digital7Italic-BW658.ttf', 50)
 
 Imagens = [janelaA_image1]
 
+lista_animacoes = [inicio_imagem1,inicio_imagem2,inicio_imagem3,inicio_imagem4,inicio_imagem5,inicio_imagem6,inicio_imagem7,inicio_imagem8,inicio_imagem9,inicio_imagem10,inicio_imagem11,inicio_imagem12,inicio_imagem13]
+
 # ----- Inicia estruturas de dados
 game = True
 janela1=[[1,1],[1,2],[2,1],[2,2],[1,3],[2,3]]
