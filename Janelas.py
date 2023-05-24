@@ -138,13 +138,35 @@ janela9=[[9,9],[9,10],[9,11],[10,9],[10,10],[10,11]]
 intervalo = [250,500,750,100,1000]
 ABERTA=[False,False,False,False,False,False,False,False,False]
 Velocidade = 2000
-Coordenadas =[[50,50],[250,50],[450,50],[50,250],[250,250],[450,250],[50,450],[250,450],[450,450]]
 areaj= [[1,1],[1,2],[2,1],[2,2],[1,3],[2,3],[5,1],[5,2],[5,3],[6,1],[6,2],[6,3],[9,1],[9,2],[9,3],[10,1],[10,2],[10,3],[1,5],[1,6],[1,7],[2,5],[2,6],[2,7],[5,5],[5,6],[5,7],[6,5],[6,6],[6,7],[9,5],[9,6],[9,7],[10,5],[10,6],[10,7],[1,9],[1,10],[1,11],[2,9],[2,10],[2,11],[5,9],[5,10],[5,11],[6,9],[6,10],[6,11],[9,9],[9,10],[9,11],[10,9],[10,10],[10,11]]
 Tempo = pygame.time.get_ticks()
 Tempo2 = 0
 c = 0
 lives = 3
 score = 0
+class Janela(pygame.sprite.Sprite):
+    def __init__(self, img,x,y):
+        # Construtor da classe mãe (Sprite).
+        pygame.sprite.Sprite.__init__(self)
+
+        self.image = img
+        self.rect = self.image.get_rect()
+        self.rect.x = x 
+        self.rect.y = y 
+    def abre_janela(self,img_aberta):
+        self.image = img_aberta
+    def fecha_janela(self,img):
+        self.image = img 
+JanelasF1 = Janela(janela_image,50,50)
+JanelasF2 = Janela(janela_image,250,50)
+JanelasF3 = Janela(janela_image,450,50)
+JanelasF4 = Janela(janela_image,50,250)
+JanelasF5 = Janela(janela_image,250,250)
+JanelasF6 = Janela(janela_image,450,250)
+JanelasF7 = Janela(janela_image,50,450)
+JanelasF8 = Janela(janela_image,250,450)
+JanelasF9 = Janela(janela_image,450,450)
+lista_janelas = [JanelasF1,JanelasF2,JanelasF3,JanelasF4,JanelasF5,JanelasF6,JanelasF7,JanelasF8,JanelasF9]  
 # ===== Loop principal =====
 while game:
     score = ( pygame.time.get_ticks()- A)//1000
@@ -199,12 +221,16 @@ while game:
 
 # ------------- Imgens e Configurações
     window.blit(brick_image,(0,0))
-    
-    i=-1
-    for e in ABERTA:
-        i+=1
-        if e == False:
-            window.blit(janela_image,(Coordenadas[i]))
+    for j in lista_janelas:
+        window.blit(j.image,j.rect)
+
+    #------------- velocidade-----------------
+    agora2=pygame.time.get_ticks()
+    if agora2 - Tempo2 == 5000:
+        if Velocidade>200:
+            Tempo2 = agora2
+            Velocidade -= 100
+
 
     #------------- velocidade-----------------
     agora2=pygame.time.get_ticks()
@@ -221,40 +247,24 @@ while game:
     if agora - Tempo > Velocidade: 
         Tempo = agora
         n = random.randint(0,9)
-        for e in range(8):
+        for e in range(9):
             if e == n:
                 print(Velocidade)
                 ABERTA[n]=True
                 b=random.randint(0,0)
-    #-------------Verifica se a janela está aberta
-    if ABERTA[0]==True:
-        
-        window.blit(Imagens[b],(Coordenadas[0]))
-    if ABERTA[1]==True:
-        
-        window.blit(Imagens[b],(Coordenadas[1]))
-    if ABERTA[2]==True:
-        
-        window.blit(Imagens[b],(Coordenadas[2]))
-    if ABERTA[3]==True:
-        
-        window.blit(Imagens[b],(Coordenadas[3]))
-    if ABERTA[4]==True:
-        
-        window.blit(Imagens[b],(Coordenadas[4]))
-    if ABERTA[5]==True:
-        
-        window.blit(Imagens[b],(Coordenadas[5]))
-    if ABERTA[6]==True:
-        
-        window.blit(Imagens[b],(Coordenadas[6]))
-    if ABERTA[7]==True:
-        
-        window.blit(Imagens[b],(Coordenadas[7]))
-    if ABERTA[8]==True:
-        
-        window.blit(Imagens[b],(Coordenadas[8]))
+
     
+    
+    #-------------Verifica se a janela está aberta
+    for i in range (9):
+        if ABERTA[i]==True:
+
+            lista_janelas[i].abre_janela(janelaA_image2)
+        else:
+            lista_janelas[i].fecha_janela(janela_image)
+   
+
+
         
     # ----- Atualiza estado do jogo
     text_surface = lives_font.render(chr(9829) * lives, True, (100, 100, 200))
