@@ -10,19 +10,38 @@ window = pygame.display.set_mode((600, 700))
 HEIGHT = 700
 WIDTH = 600
 pygame.display.set_caption('SUPER JOGO DO ENRICO')
-inicio_imagem1 = pygame.image.load('assets/img/Animacao1.png').convert()
-inicio_imagem2 = pygame.image.load('assets/img/Animacao2.png').convert()
-inicio_imagem3 = pygame.image.load('assets/img/Animacao3.png').convert()
-inicio_imagem4 = pygame.image.load('assets/img/Animacao4.png').convert()
-inicio_imagem5 = pygame.image.load('assets/img/Animacao5.png').convert()
-inicio_imagem6 = pygame.image.load('assets/img/Animacao6.png').convert()
-inicio_imagem7 = pygame.image.load('assets/img/Animacao7.png').convert()
-inicio_imagem8 = pygame.image.load('assets/img/Animacao8.png').convert()
-inicio_imagem9 = pygame.image.load('assets/img/Animacao9.png').convert()
-inicio_imagem10 = pygame.image.load('assets/img/Animacao10.png').convert()
-inicio_imagem11 = pygame.image.load('assets/img/Animacao11.png').convert()
-inicio_imagem12 = pygame.image.load('assets/img/Animacao12.png').convert()
-inicio_imagem13 = pygame.image.load('assets/img/Animacao13.png').convert()
+inicio_imagem1 = pygame.image.load('assets/img/Animacao1.jpg').convert()
+inicio_imagem1 = pygame.transform.scale(inicio_imagem1, (600, 700))
+inicio_imagem2 = pygame.image.load('assets/img/Animacao2.jpg').convert()
+inicio_imagem2 = pygame.transform.scale(inicio_imagem2, (600, 700))
+inicio_imagem3 = pygame.image.load('assets/img/Animacao3.jpg').convert()
+inicio_imagem3 = pygame.transform.scale(inicio_imagem3, (600, 700))
+inicio_imagem4 = pygame.image.load('assets/img/Animacao4.jpg').convert()
+inicio_imagem4 = pygame.transform.scale(inicio_imagem4, (600, 700))
+inicio_imagem5 = pygame.image.load('assets/img/Animacao5.jpg').convert()
+inicio_imagem5 = pygame.transform.scale(inicio_imagem5, (600, 700))
+inicio_imagem6 = pygame.image.load('assets/img/Animacao6.jpg').convert()
+inicio_imagem6 = pygame.transform.scale(inicio_imagem6, (600, 700))
+inicio_imagem7 = pygame.image.load('assets/img/Animacao7.jpg').convert()
+inicio_imagem7 = pygame.transform.scale(inicio_imagem7, (600, 700))
+inicio_imagem8 = pygame.image.load('assets/img/Animacao8.jpg').convert()
+inicio_imagem8 = pygame.transform.scale(inicio_imagem8, (600, 700))
+inicio_imagem9 = pygame.image.load('assets/img/Animacao9.jpg').convert()
+inicio_imagem9 = pygame.transform.scale(inicio_imagem9, (600, 700))
+inicio_imagem10 = pygame.image.load('assets/img/Animacao10.jpg').convert()
+inicio_imagem10 = pygame.transform.scale(inicio_imagem10, (600, 700))
+inicio_imagem11 = pygame.image.load('assets/img/Animacao11.jpg').convert()
+inicio_imagem11 = pygame.transform.scale(inicio_imagem11, (600, 700))
+inicio_imagem12 = pygame.image.load('assets/img/Animacao12.jpg').convert()
+inicio_imagem12 = pygame.transform.scale(inicio_imagem12, (600, 700))
+inicio_imagem13 = pygame.image.load('assets/img/Animacao13.jpg').convert()
+inicio_imagem13 = pygame.transform.scale(inicio_imagem13, (600, 700))
+
+
+
+'''janela_abrindo = pygame.mixer.Sound('assets/snd/')
+janela_fechando = pygame.mixer.Sound('assets/snd/')
+Som_fundo = pygame.mixer.Sound('assets/snd/')'''
 
 brick_image = pygame.image.load('assets/img/Fundo.png').convert()
 brick_image = pygame.transform.scale(brick_image, (600, 700))
@@ -46,6 +65,66 @@ Imagens = [janelaA_image1]
 lista_animacoes = [inicio_imagem1,inicio_imagem2,inicio_imagem3,inicio_imagem4,inicio_imagem5,inicio_imagem6,inicio_imagem7,inicio_imagem8,inicio_imagem9,inicio_imagem10,inicio_imagem11,inicio_imagem12,inicio_imagem13]
 
 # ----- Inicia estruturas de dados
+Inicio = True
+Tempo3 = 0
+End  = True
+while Inicio:
+
+    for event in pygame.event.get():
+        # ----- Verifica consequências
+        if event.type == pygame.QUIT:
+            Inicio = False
+            game = False
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            a = pygame.time.get_ticks()
+            while End:
+                agora = pygame.time.get_ticks()
+                if agora - a > 0 and agora - a < 100:
+                    window.blit(inicio_imagem13,(0,0))
+                    pygame.display.update()
+                if agora - a > 100 and agora - a < 200:
+                    window.blit(inicio_imagem12,(0,0))
+                    pygame.display.update()
+                if agora - a > 200 and agora - a < 300:
+                    window.blit(inicio_imagem11,(0,0))
+                    pygame.display.update()
+                if agora - a > 300 and agora - a < 400 :
+                    window.blit(inicio_imagem10,(0,0))
+                    pygame.display.update()
+                if agora - a > 400 and agora - a < 500:
+                    window.blit(inicio_imagem9,(0,0))
+                    pygame.display.update()
+                if agora - a > 500 and agora - a < 600:
+                    window.blit(inicio_imagem8,(0,0))
+                    pygame.display.update()
+                if agora - a > 600 and agora - a < 700:
+                    window.blit(inicio_imagem7,(0,0))
+                    pygame.display.update()
+                if agora - a > 700 and agora - a < 800:
+                    window.blit(inicio_imagem6,(0,0))
+                    pygame.display.update()
+                if agora - a > 800 and agora - a < 900:
+                    window.blit(inicio_imagem5,(0,0))
+                    pygame.display.update()
+                if agora - a > 900 and agora - a < 1000:
+                    window.blit(inicio_imagem4,(0,0))
+                    pygame.display.update()
+                if agora - a > 1000 and agora - a < 1100:
+                    window.blit(inicio_imagem3,(0,0))
+                    pygame.display.update()
+                if agora - a > 1100 and agora - a < 1200:
+                    window.blit(inicio_imagem2,(0,0))
+                    pygame.display.update()
+                if agora - a > 1200:
+                    window.blit(inicio_imagem1,(0,0))
+                    pygame.display.update()
+                if agora - a > 1300:
+                    Inicio = False
+                    End =False
+                    pygame.display.update()
+
+A = pygame.time.get_ticks()
+
 game = True
 janela1=[[1,1],[1,2],[2,1],[2,2],[1,3],[2,3]]
 janela2=[[5,1],[5,2],[5,3],[6,1],[6,2],[6,3]]
@@ -68,7 +147,7 @@ lives = 3
 score = 0
 # ===== Loop principal =====
 while game:
-    score = pygame.time.get_ticks()//1000
+    score = ( pygame.time.get_ticks()- A)//1000
 
 
     
