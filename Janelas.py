@@ -10,6 +10,10 @@ window = pygame.display.set_mode((600, 700))
 HEIGHT = 700
 WIDTH = 600
 pygame.display.set_caption('SUPER JOGO DO ENRICO')
+janela_gameover = pygame.image.load('assets/img/janelas-gameover.png').convert()
+janela_gameover = pygame.transform.scale(janela_gameover, (600, 700))
+inicio_imagem0 = pygame.image.load('assets/img/Animacao0.png').convert()
+inicio_imagem0 = pygame.transform.scale(inicio_imagem0, (600, 700))
 inicio_imagem1 = pygame.image.load('assets/img/Animacao1.jpg').convert()
 inicio_imagem1 = pygame.transform.scale(inicio_imagem1, (600, 700))
 inicio_imagem2 = pygame.image.load('assets/img/Animacao2.jpg').convert()
@@ -39,7 +43,8 @@ inicio_imagem13 = pygame.transform.scale(inicio_imagem13, (600, 700))
 
 
 
-'''janela_abrindo = pygame.mixer.Sound('assets/snd/')
+janela_abrindo = pygame.mixer.Sound('assets/snd/janela_abrindo.mp3')
+'''
 janela_fechando = pygame.mixer.Sound('assets/snd/')
 Som_fundo = pygame.mixer.Sound('assets/snd/')'''
 
@@ -122,6 +127,9 @@ while Inicio:
                     Inicio = False
                     End =False
                     pygame.display.update()
+        else:
+            window.blit(inicio_imagem0,(0,0))
+            pygame.display.update()
 
 A = pygame.time.get_ticks()
 
@@ -137,9 +145,9 @@ janela8=[[5,9],[5,10],[5,11],[6,9],[6,10],[6,11]]
 janela9=[[9,9],[9,10],[9,11],[10,9],[10,10],[10,11]]
 intervalo = [250,500,750,100,1000]
 ABERTA=[False,False,False,False,False,False,False,False,False]
-Velocidade = 2000
+Velocidade = 1500
 areaj= [[1,1],[1,2],[2,1],[2,2],[1,3],[2,3],[5,1],[5,2],[5,3],[6,1],[6,2],[6,3],[9,1],[9,2],[9,3],[10,1],[10,2],[10,3],[1,5],[1,6],[1,7],[2,5],[2,6],[2,7],[5,5],[5,6],[5,7],[6,5],[6,6],[6,7],[9,5],[9,6],[9,7],[10,5],[10,6],[10,7],[1,9],[1,10],[1,11],[2,9],[2,10],[2,11],[5,9],[5,10],[5,11],[6,9],[6,10],[6,11],[9,9],[9,10],[9,11],[10,9],[10,10],[10,11]]
-Tempo = pygame.time.get_ticks()
+Tempo = 0
 Tempo2 = 0
 c = 0
 lives = 3
@@ -225,25 +233,17 @@ while game:
         window.blit(j.image,j.rect)
 
     #------------- velocidade-----------------
-    agora2=pygame.time.get_ticks()
+    agora2=( pygame.time.get_ticks()- A)
+
     if agora2 - Tempo2 == 5000:
         if Velocidade>200:
             Tempo2 = agora2
             Velocidade -= 100
-
-
-    #------------- velocidade-----------------
-    agora2=pygame.time.get_ticks()
-    if agora2 - Tempo2 == 5000:
-        if Velocidade>200:
-            Tempo2 = agora2
-            Velocidade -= 100
-
         
     
 
     #-------------Abre janelas
-    agora=pygame.time.get_ticks()
+    agora=( pygame.time.get_ticks()- A)
     if agora - Tempo > Velocidade: 
         Tempo = agora
         n = random.randint(0,9)
@@ -279,5 +279,62 @@ while game:
     
 
     pygame.display.update()  # Mostra o novo frame para o jogador
+final = True
+End = True
+while final:
+
+    for event in pygame.event.get():
+        # ----- Verifica consequências
+        if event.type == pygame.QUIT:
+            final = False
+            game = False
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            a = pygame.time.get_ticks()
+            while End:
+                agora = pygame.time.get_ticks()
+                if agora - a > 0 and agora - a < 100:
+                    window.blit(inicio_imagem1,(0,0))
+                    pygame.display.update()
+                if agora - a > 100 and agora - a < 200:
+                    window.blit(inicio_imagem2,(0,0))
+                    pygame.display.update()
+                if agora - a > 200 and agora - a < 300:
+                    window.blit(inicio_imagem3,(0,0))
+                    pygame.display.update()
+                if agora - a > 300 and agora - a < 400 :
+                    window.blit(inicio_imagem4,(0,0))
+                    pygame.display.update()
+                if agora - a > 400 and agora - a < 500:
+                    window.blit(inicio_imagem5,(0,0))
+                    pygame.display.update()
+                if agora - a > 500 and agora - a < 600:
+                    window.blit(inicio_imagem6,(0,0))
+                    pygame.display.update()
+                if agora - a > 600 and agora - a < 700:
+                    window.blit(inicio_imagem7,(0,0))
+                    pygame.display.update()
+                if agora - a > 700 and agora - a < 800:
+                    window.blit(inicio_imagem8,(0,0))
+                    pygame.display.update()
+                if agora - a > 800 and agora - a < 900:
+                    window.blit(inicio_imagem9,(0,0))
+                    pygame.display.update()
+                if agora - a > 900 and agora - a < 1000:
+                    window.blit(inicio_imagem10,(0,0))
+                    pygame.display.update()
+                if agora - a > 1000 and agora - a < 1100:
+                    window.blit(inicio_imagem11,(0,0))
+                    pygame.display.update()
+                if agora - a > 1100 and agora - a < 1200:
+                    window.blit(inicio_imagem12,(0,0))
+                    pygame.display.update()
+                if agora - a > 1200 and agora - a > 1300:
+                    window.blit(inicio_imagem13,(0,0))
+                    pygame.display.update()
+                if agora - a > 1300:
+                    final = False
+                    End =False
+                    window.blit(janela_gameover,(0,0))
+                    pygame.display.update()
 # ===== Finalização =====
 pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
