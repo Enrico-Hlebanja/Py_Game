@@ -43,10 +43,10 @@ inicio_imagem13 = pygame.transform.scale(inicio_imagem13, (600, 700))
 
 
 
-janela_abrindo = pygame.mixer.Sound('assets/snd/janela_abrindo.mp3')
-'''
-janela_fechando = pygame.mixer.Sound('assets/snd/')
-Som_fundo = pygame.mixer.Sound('assets/snd/')'''
+janela_abrindo = pygame.mixer.Sound('assets/snd/Janela_abrindo.mp3')
+
+janela_fechando = pygame.mixer.Sound('assets/snd/Janela_fechando.mp3')
+'''Som_fundo = pygame.mixer.Sound('assets/snd/')'''
 
 brick_image = pygame.image.load('assets/img/Fundo.png').convert()
 brick_image = pygame.transform.scale(brick_image, (600, 700))
@@ -226,6 +226,7 @@ while game:
                     lives-=1
                 if e > 0 and ABERTA[e-1] == True:
                     ABERTA[e-1] = False
+                    janela_fechando.play()
 
 # ------------- Imgens e Configurações
     window.blit(brick_image,(0,0))
@@ -250,6 +251,7 @@ while game:
         for e in range(9):
             if e == n:
                 print(Velocidade)
+                janela_abrindo.play()
                 ABERTA[n]=True
                 b=random.randint(0,0)
 
