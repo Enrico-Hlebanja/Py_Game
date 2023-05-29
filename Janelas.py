@@ -9,7 +9,9 @@ pygame.init()
 window = pygame.display.set_mode((600, 700))
 HEIGHT = 700
 WIDTH = 600
-pygame.display.set_caption('SUPER JOGO DO ENRICO')
+#título do jogo 
+pygame.display.set_caption('Janelas traiçoeiras')
+#nomeando as imagens da intro
 janela_gameover = pygame.image.load('assets/img/janelas-gameover.png').convert()
 janela_gameover = pygame.transform.scale(janela_gameover, (600, 700))
 inicio_imagem0 = pygame.image.load('assets/img/Animacao0.png').convert()
@@ -42,12 +44,11 @@ inicio_imagem13 = pygame.image.load('assets/img/Animacao13.jpg').convert()
 inicio_imagem13 = pygame.transform.scale(inicio_imagem13, (600, 700))
 
 
-
+#sons
 janela_abrindo = pygame.mixer.Sound('assets/snd/Janela_abrindo.mp3')
-
 janela_fechando = pygame.mixer.Sound('assets/snd/Janela_fechando.mp3')
-'''Som_fundo = pygame.mixer.Sound('assets/snd/')'''
 
+#nomeando as imagens principais 
 brick_image = pygame.image.load('assets/img/Fundo.png').convert()
 brick_image = pygame.transform.scale(brick_image, (600, 700))
 janela_image = pygame.image.load('assets/img/Janela.png').convert()
@@ -73,6 +74,7 @@ lista_animacoes = [inicio_imagem1,inicio_imagem2,inicio_imagem3,inicio_imagem4,i
 Inicio = True
 Tempo3 = 0
 End  = True
+#loop da introdução do jogo 
 while Inicio:
 
     for event in pygame.event.get():
@@ -131,8 +133,8 @@ while Inicio:
             window.blit(inicio_imagem0,(0,0))
             pygame.display.update()
 
+#valores inicias 
 A = pygame.time.get_ticks()
-
 game = True
 janela1=[[1,1],[1,2],[2,1],[2,2],[1,3],[2,3]]
 janela2=[[5,1],[5,2],[5,3],[6,1],[6,2],[6,3]]
@@ -152,6 +154,7 @@ Tempo2 = 0
 c = 0
 lives = 3
 score = 0
+#classe da janela
 class Janela(pygame.sprite.Sprite):
     def __init__(self, img,x,y):
         # Construtor da classe mãe (Sprite).
@@ -165,6 +168,8 @@ class Janela(pygame.sprite.Sprite):
         self.image = img_aberta
     def fecha_janela(self,img):
         self.image = img 
+
+#criação das janelas por meio da classe 
 JanelasF1 = Janela(janela_image,50,50)
 JanelasF2 = Janela(janela_image,250,50)
 JanelasF3 = Janela(janela_image,450,50)
