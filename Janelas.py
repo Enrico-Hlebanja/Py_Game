@@ -147,7 +147,7 @@ janela8=[[5,9],[5,10],[5,11],[6,9],[6,10],[6,11]]
 janela9=[[9,9],[9,10],[9,11],[10,9],[10,10],[10,11]]
 intervalo = [250,500,750,100,1000]
 ABERTA=[False,False,False,False,False,False,False,False,False]
-Velocidade = 1500
+Velocidade = 1000
 areaj= [[1,1],[1,2],[2,1],[2,2],[1,3],[2,3],[5,1],[5,2],[5,3],[6,1],[6,2],[6,3],[9,1],[9,2],[9,3],[10,1],[10,2],[10,3],[1,5],[1,6],[1,7],[2,5],[2,6],[2,7],[5,5],[5,6],[5,7],[6,5],[6,6],[6,7],[9,5],[9,6],[9,7],[10,5],[10,6],[10,7],[1,9],[1,10],[1,11],[2,9],[2,10],[2,11],[5,9],[5,10],[5,11],[6,9],[6,10],[6,11],[9,9],[9,10],[9,11],[10,9],[10,10],[10,11]]
 Tempo = 0
 Tempo2 = 0
@@ -335,13 +335,14 @@ while final:
                 if agora - a > 1100 and agora - a < 1200:
                     window.blit(inicio_imagem12,(0,0))
                     pygame.display.update()
-                if agora - a > 1200 and agora - a > 1300:
+                if agora - a > 1200 and agora - a < 1300:
                     window.blit(inicio_imagem13,(0,0))
                     pygame.display.update()
-                if agora - a > 1300:
-                    final = False
-                    End =False
+                if agora - a > 1300 and agora - a < 3600:
                     window.blit(janela_gameover,(0,0))
                     pygame.display.update()
+                if agora - a > 3700 :
+                    final = False
+                    End =False
 # ===== Finalização =====
 pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
