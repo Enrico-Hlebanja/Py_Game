@@ -241,10 +241,10 @@ while game:
     #------------- velocidade-----------------
     agora2=( pygame.time.get_ticks()- A)
 
-    if agora2 - Tempo2 == 5000:
-        if Velocidade>200:
+    if agora2 - Tempo2 == 4000:
+        if Velocidade>300:
             Tempo2 = agora2
-            Velocidade -= 100
+            Velocidade -= 50
         
     
 
